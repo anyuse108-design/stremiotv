@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stremio.tv">
 
-    <!-- Internet access for WebView -->
+    <!-- Internet for WebView -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- Declare this is an Android TV app -->
+    <!-- Android TV requirement -->
     <uses-feature
         android:name="android.software.leanback"
         android:required="true" />
@@ -13,18 +13,27 @@
     <application
         android:allowBackup="true"
         android:label="Stremio TV"
-        android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
-        android:supportsRtl="true">
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
 
-        <!-- Android TV launcher entry -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:screenOrientation="landscape">
 
+            <!-- Android TV launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+            <!-- Fallback for phones (optional but safe) -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
