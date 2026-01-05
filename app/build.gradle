@@ -13,14 +13,16 @@ android {
         versionCode 1
         versionName "1.0"
 
-        manifestPlaceholders = [
-                leanbackLauncher: true
-        ]
+        // Required for WebView + TV
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'
+            ), 'proguard-rules.pro'
         }
     }
 
@@ -31,7 +33,15 @@ android {
 }
 
 dependencies {
+    // Core Android
     implementation 'androidx.core:core-ktx:1.12.0'
+
+    // Android TV / Leanback
     implementation 'androidx.leanback:leanback:1.0.0'
+
+    // WebView support
     implementation 'androidx.webkit:webkit:1.9.0'
+
+    // Multidex (important)
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
