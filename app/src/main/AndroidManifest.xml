@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stremio.tv">
 
-    <!-- Internet for WebView -->
+    <!-- Internet permission for WebView -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- Android TV requirement -->
@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:label="Stremio TV"
         android:icon="@mipmap/ic_launcher"
-        android:banner="@mipmap/ic_launcher"
+        android:banner="@drawable/banner"
         android:usesCleartextTraffic="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
 
@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
 
-            <!-- Fallback for phones (optional but safe) -->
+            <!-- Fallback for phones (safe to keep) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
